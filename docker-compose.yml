@@ -1,0 +1,27 @@
+version: '3.8'
+services:
+  # The Deception Layer
+  honeypot-web:
+    build: ./src
+    container_name: admin_portal_trap
+    ports:
+      - "8080:80" # Exposed locally for testing
+    volumes:
+      - ./logs:/var/log/app
+    networks:
+      - trap-net
+    restart: always
+
+  # The Logging/Analysis Layer 
+  log-monitor:
+    image: busybox
+    container_name: log_observer
+    volumes:
+      - ./logs:/var/log/app
+    command: tail -f /var/log/app/access.log
+    networks:
+      - trap-net
+
+networks:
+  trap-net:
+    driver: bridge
