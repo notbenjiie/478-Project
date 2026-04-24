@@ -5,7 +5,7 @@ services:
     build: ./src
     container_name: admin_portal_trap
     ports:
-      - "8080:80" # Exposed locally for testing
+      - "8080:8080" # Exposed locally for testing
     volumes:
       - ./logs:/var/log/app
     networks:
