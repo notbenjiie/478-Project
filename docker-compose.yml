@@ -1,6 +1,6 @@
 version: '3.8'
 services:
-  # The Deception Layer
+  # The Deception Layer (Hardened for Section C)
   honeypot-web:
     build: ./src
     container_name: admin_portal_trap
@@ -13,6 +13,30 @@ services:
     networks:
       - trap-net
     restart: always
+    #hardening lines below
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'        # Prevent CPU exhaustion (DoS)
+          memory: 512M      # Prevent memory leaks from crashing VM
+    security_opt:
+      - no-new-privileges:true  # Prevents attacker from escalating to root
+    cap_drop:
+      - ALL                 # Drops all Linux capabilities
+    cap_add:
+      - NET_BIND_SERVICE    # Only allow it to bind to the port
+
+  # The Sidecar Sniffer (CRITICAL for PCAP Evidence)
+  forensic-sniffer:
+    image: nicolaka/netshoot
+    container_name: forensic_sniff
+    network_mode: "service:honeypot-web" # Share network to "see" attacker traffic
+    volumes:
+      - ./artifacts/release:/captures
+    # Captures traffic on port 8080 and saves it as evidence
+    command: tcpdump -i any port 8080 -w /captures/evidence.pcap
+    depends_on:
+      - honeypot-web
 
   # The Logging/Analysis Layer 
   log-monitor:
