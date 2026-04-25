@@ -40,3 +40,18 @@ NORMAL GET / from 172.19.0.1
 SUSPICIOUS GET /admin from 172.19.0.1
 
 Logs location: logs/access.log
+
+## Security Invariants
+1. **Zero Trust Logging:** The system assumes all traffic to the decoy is malicious.
+2. **Data Isolation:** Captured credentials are never stored in the production DB; they remain in isolated forensic logs.
+3. **Least Privilege:** All containers run with restricted CPU/Memory and non-root users.
+
+## Runbook
+### Full Rebuild and Run
+1. `make clean` (Remove old artifacts)
+2. `make up` (Build and start containers)
+3. `make demo` (Run the automated attack simulation)
+
+### Evidence Generation
+1. Run `python3 src/generate_metrics.py` to refresh JSON/CSV metrics.
+2. Check `artifacts/release/` for the latest PCAPs and logs.
