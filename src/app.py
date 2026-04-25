@@ -12,15 +12,20 @@ logging.basicConfig(
     format="%(asctime)s %(message)s"
 )
 
+def classify_path(path):
+    """
+    Classify incoming request paths.
+    Any path containing 'admin' is considered suspicious.
+    """
+    if "admin" in path.lower():
+        return "SUSPICIOUS"
+    return "NORMAL"
+
 class Handler(BaseHTTPRequestHandler):
     def do_GET(self):
         ip = self.client_address[0]
 
-        # Simple analysis step
-        if "admin" in self.path.lower():
-            label = "SUSPICIOUS"
-        else:
-            label = "NORMAL"
+        label = classify_path(self.path)
 
         log_entry = f"{label} GET {self.path} from {ip}"
         logging.info(log_entry)
@@ -30,7 +35,7 @@ class Handler(BaseHTTPRequestHandler):
         self.end_headers()
         self.wfile.write(f"{label}: Hello from honeypot\n".encode())
 
-# Start server
-server = HTTPServer(("0.0.0.0", 8080), Handler)
-print("Honeypot running on port 8080...")
-server.serve_forever()
+if __name__ == "__main__":
+    server = HTTPServer(("0.0.0.0", 8080), Handler)
+    print("Honeypot running on port 8080...")
+    server.serve_forever()
