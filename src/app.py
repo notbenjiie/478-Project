@@ -2,10 +2,9 @@ from http.server import BaseHTTPRequestHandler, HTTPServer
 import logging
 import os
 
-LOG_DIR = os.environ.get("HONEYPOT_LOG_DIR", "/var/log/app")
+LOG_DIR = os.environ.get("HONEYPOT_LOG_DIR", "logs")
 os.makedirs(LOG_DIR, exist_ok=True)
 
-# Configure logging
 logging.basicConfig(
     filename=os.path.join(LOG_DIR, "access.log"),
     level=logging.INFO,
