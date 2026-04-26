@@ -53,5 +53,5 @@ Logs location: logs/access.log
 3. `make demo` (Run the automated attack simulation)
 
 ### Evidence Generation
-1. Run `python3 src/generate_metrics.py` to refresh JSON/CSV metrics.
-2. Check `artifacts/release/` for the latest PCAPs and logs.
+1. Run `python3 src/generate_metrics.py` to refresh JSON metrics.
+2. Check `artifacts/release/` for the latest logs.
