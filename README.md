@@ -30,7 +30,6 @@ the demo performs a complete end to end execution of the system:
 2. sends test request to the server
 3. classifies request as normal or suspicious
 4. Logs all activity for analysis
-
 example output:
 NORMAL: Hello from honeypot
 SUSPICIOUS: Hello from honeypot
@@ -40,6 +39,9 @@ NORMAL GET / from 172.19.0.1
 SUSPICIOUS GET /admin from 172.19.0.1
 
 Logs location: logs/access.log
+
+## Demo Video
+[watch Demo](DOCS/demo.mp4)
 
 ## Security Invariants
 1. **Zero Trust Logging:** The system assumes all traffic to the decoy is malicious.
