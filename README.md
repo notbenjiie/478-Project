@@ -44,7 +44,7 @@ Logs location: logs/access.log
 ## Security Invariants
 1. **Zero Trust Logging:** The system assumes all traffic to the decoy is malicious.
 2. **Data Isolation:** Captured credentials are never stored in the production DB; they remain in isolated forensic logs.
-3. **Least Privilege:** All containers run with restricted CPU/Memory and non-root users.
+3. **Least Privilege:** All containers run with restricted CPU/Memory.
 
 ## Runbook
 ### Full Rebuild and Run
