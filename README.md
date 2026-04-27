@@ -14,19 +14,20 @@ Setup Overview: We must setup this github repo, docker instances of the decoy an
 
 ## How to run
 `Linux (ubuntu)`
+
 or 
 
 `Windows`
 
 ## Run the full demo
 `demo.bat` for windows
-
+`make up && make down` for linux
 This will:
 - Start Docker containers
 - Send test requests
 - Generate logs and metrics
 
-## Manual Steps
+## Manual Steps for Windows 
 
 start the system:
 
@@ -52,8 +53,11 @@ start the system:
 `type artifacts\release\metrics.json`
 - this file contains a summary of total requests, normal traffic, and suspicious activity
 
-## Demo Video
+## Demo Video Windows
 [watch Demo](DOCS/demo.mp4)
+
+## Demo Video Linux
+
 
 ## Security Invariants
 1. **Zero Trust Logging:** The system assumes all traffic to the decoy is malicious.
