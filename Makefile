@@ -15,6 +15,7 @@ demo:
 	@echo "---- Logs ----"
 	cat logs/access.log
 	@echo "--------------"
+	python src/generate_metrics.py
 	@echo "Demo complete."
 
 logs:
