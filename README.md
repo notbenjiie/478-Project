@@ -41,7 +41,7 @@ Logs:
 - NORMAL GET /
 - SUSPICIOUS GET /admin
 
-## Demo Video Linux
+## Demo Video
 [watch Demo](DOCS/demo.mp4)
 
 ## Security Invariants
