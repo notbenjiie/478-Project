@@ -48,19 +48,13 @@ Logs:
 2. **Data Isolation:** Captured credentials are never stored in the production DB; they remain in isolated forensic logs.
 3. **Least Privilege:** All containers run with restricted CPU/Memory.
 
-Example behavior 
-request  
-- /
-- /admin
-- /test
+Example request:
 
-classification
+- `/` → NORMAL  
+- `/admin` → SUSPICIOUS  
+- `/test` → NORMAL  
 
-- NORMAL
-- SUSPICIOUS
-- NORMAL
-
-Example log entries
+Example log entries:
 - NORMAL GET /
 - SUSPICIOUS GET /admin
 
@@ -87,18 +81,13 @@ the system successfully:
 - Classifies requests as normal or suspicious
 - Logs all activity
 - Generates structured metrics for analysis
-  
-Example output:
-- NORMAL → /
-- SUSPICIOUS → /admin
-- NORMAL → /test
 
-Metrics are exported to:
+example classification:
+- NORMAL → `/`
+- SUSPICIOUS → `/admin`
+- NORMAL → `/test`
 
-- NORMAL → /
-- SUSPICIOUS → /admin
-- NORMAL → /test
-
-Metrics are exported to:
+## Metrics output
+metrics are exported to:
 
 `artifacts/release/metrics.json`
