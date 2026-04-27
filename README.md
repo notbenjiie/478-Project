@@ -17,48 +17,55 @@ Setup Overview: We must setup this github repo, docker instances of the decoy an
 ### clone the repository and start the system
 
 - bash 
-git clone https://github.com/notbenjiie/478-Project.git
-cd 478-Project
+`git clone https://github.com/notbenjiie/478-Project.git`
+`cd 478-Project`
 
 2. Star the system 
-make up
+`make up`
 
 on windows run
-demo.bat
+`demo.bat`
 
 note: on windows you run (demo.bat)
 
 3. simulate traffic
-- curl http://localhost:8080 (normal)
-- curl http://localhost:8080/admin (suspicious)
-- curl http://localhost:8080/test (normal)
+- `curl http://localhost:8080 (normal)`
+- `curl http://localhost:8080/admin (suspicious)`
+- `curl http://localhost:8080/test (normal)`
 
 4. View logs
-type logs\access.log
+   
+`type logs\access.log`
+
 - log records all incoming requests and classifications
   
 5. Generate metrics
 python src\generate_metrics.py
 
 6. View results
-type artifacts\release\metrics.json
+   
+`type artifacts\release\metrics.json`
 - this file contains a summary of total requests, normal traffic, and suspicious activity
-- 
-demo description
+  
+## Demo description
 the demo performs a complete end to end execution of the system:
 1. starts the honeypot service inside docker
 2. sends test request to the server
 3. classifies request as normal or suspicious
 4. Logs all activity for analysis
+   
 example output:
-NORMAL: Hello from honeypot
-SUSPICIOUS: Hello from honeypot
+
+`NORMAL: Hello from honeypot`
+
+`SUSPICIOUS: Hello from honeypot`
 
 Logs:
-NORMAL GET / from 172.19.0.1
-SUSPICIOUS GET /admin from 172.19.0.1
+`NORMAL GET / from 172.19.0.1`
 
-Logs location: logs/access.log
+`SUSPICIOUS GET /admin from 172.19.0.1`
+
+- Logs location: logs/access.log
 
 ## Demo Video
 [watch Demo](DOCS/demo.mp4)
