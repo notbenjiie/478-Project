@@ -14,19 +14,21 @@ Setup Overview: We must setup this github repo, docker instances of the decoy an
 
 ## How to run
 
-### clone the repository and start the system
+`Windows (recommended)`
 
-- bash 
-`git clone https://github.com/notbenjiie/478-Project.git`
-`cd 478-Project`
-
-2. Star the system 
-`make up`
-
-on windows run
+## Run the full demo
 `demo.bat`
 
-note: on windows you run (demo.bat)
+This will:
+- Start Docker containers
+- Send test requests
+- Generate logs and metrics
+
+## Manual Steps
+
+start the system:
+
+`docker-compose up -d --build`
 
 3. simulate traffic
 - `curl http://localhost:8080 (normal)`
@@ -40,32 +42,13 @@ note: on windows you run (demo.bat)
 - log records all incoming requests and classifications
   
 5. Generate metrics
-python src\generate_metrics.py
+   
+`python src\generate_metrics.py`
 
-6. View results
+7. View results
    
 `type artifacts\release\metrics.json`
 - this file contains a summary of total requests, normal traffic, and suspicious activity
-  
-## Demo description
-the demo performs a complete end to end execution of the system:
-1. starts the honeypot service inside docker
-2. sends test request to the server
-3. classifies request as normal or suspicious
-4. Logs all activity for analysis
-   
-example output:
-
-`NORMAL: Hello from honeypot`
-
-`SUSPICIOUS: Hello from honeypot`
-
-Logs:
-`NORMAL GET / from 172.19.0.1`
-
-`SUSPICIOUS GET /admin from 172.19.0.1`
-
-- Logs location: logs/access.log
 
 ## Demo Video
 [watch Demo](DOCS/demo.mp4)
@@ -74,6 +57,30 @@ Logs:
 1. **Zero Trust Logging:** The system assumes all traffic to the decoy is malicious.
 2. **Data Isolation:** Captured credentials are never stored in the production DB; they remain in isolated forensic logs.
 3. **Least Privilege:** All containers run with restricted CPU/Memory.
+
+Example behavior 
+request  
+- /
+- /admin
+- /test
+
+classification
+
+- Normal
+- Suspicious
+- normal
+
+Example log entries
+- Normal GET /
+- suspicious GET /admin
+
+## Artifacts
+- all generated evidence is stored in:
+`artifacts/release/`
+
+includes: 
+- metrics.json (Summary of system activity)
+- evidence.pcap (Captured network traffic)
 
 ## Runbook
 ### Full Rebuild and Run
@@ -84,3 +91,18 @@ Logs:
 ### Evidence Generation
 1. Run `python3 src/generate_metrics.py` to refresh JSON/CSV metrics.
 2. Check `artifacts/release/` for the latest logs.
+
+## Evaluation Summary
+the system successfully:
+- Classifies requests as normal or suspicious
+- Logs all activity
+- Generates structured metrics for analysis
+  
+Example output:
+- NORMAL → /
+- SUSPICIOUS → /admin
+- NORMAL → /test
+
+Metrics are exported to:
+
+artifacts/release/metrics.json
