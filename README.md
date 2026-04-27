@@ -22,8 +22,7 @@ requirements
 ## Quick Start (Reccommended)
 Run the full system
 
-`bash
-make up && make demo`
+`make up && make demo`
 
 This command will:
 - Start the honeypot system
