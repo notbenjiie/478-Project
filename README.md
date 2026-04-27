@@ -13,22 +13,47 @@ Project Overview: Our goal is to mitigate cyber attacks by creating honeypot ins
 Setup Overview: We must setup this github repo, docker instances of the decoy and the observer, creating the honey tokens and fake sites, as well as the pcapture on the observer(making sure it saves the file properly). Once that is all done we can polish and 'create' the fake files or bait, whichever direction we head in to ensure the bait is believable and keeps the attacker clicking. 
 
 ## How to run
-`Linux (ubuntu)`
 
-or 
+## requirements
+- docker
+- docker compose
+- Make
 
-`Windows`
+## Quick Start (Reccommended)
+Run the full system
 
-## Run the full demo
-`demo.bat` for windows
-`make up && make down` for linux
-This will:
-- Start Docker containers
+`bash
+make up && make demo`
+
+This command will:
+- Start the honeypot system
 - Send test requests
-- Generate logs and metrics
+- Classify traffic (NORMAL / SUSPICIOUS)
+- Display logs
+- Generate security metrics
 
-## Manual Steps for Windows 
+Example output:
+- NORMAL: Hello from honeypot
+- SUSPICIOUS: Hello from honeypot
+- NORMAL: Hello from honeypot
 
+Logs:
+- NORMAL GET /
+- SUSPICIOUS GET /admin
+
+## Windows Support (Optional)
+- for windows users, run:
+
+`bat
+demo.bat`
+
+This performs the same steps as the Makefile:
+- Starts the system
+- Sends test requests
+- Displays logs
+- Generates metrics
+  
+## Windows run (optional)
 start the system:
 
 `docker-compose up -d --build`
@@ -53,11 +78,10 @@ start the system:
 `type artifacts\release\metrics.json`
 - this file contains a summary of total requests, normal traffic, and suspicious activity
 
-## Demo Video Windows
-[watch Demo](DOCS/demo.mp4)
-
 ## Demo Video Linux
 
+## Demo Video Windows
+[watch Demo](DOCS/demo.mp4)
 
 ## Security Invariants
 1. **Zero Trust Logging:** The system assumes all traffic to the decoy is malicious.
