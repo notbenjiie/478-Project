@@ -1,2 +1,2 @@
 Benjamin Diaz
-- Stephanie Figueroa
+Stephanie Figueroa
