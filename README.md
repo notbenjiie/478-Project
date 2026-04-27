@@ -105,4 +105,10 @@ Example output:
 
 Metrics are exported to:
 
-artifacts/release/metrics.json
+- NORMAL → /
+- SUSPICIOUS → /admin
+- NORMAL → /test
+
+Metrics are exported to:
+
+`artifacts/release/metrics.json`
