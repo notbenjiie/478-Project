@@ -13,11 +13,13 @@ Project Overview: Our goal is to mitigate cyber attacks by creating honeypot ins
 Setup Overview: We must setup this github repo, docker instances of the decoy and the observer, creating the honey tokens and fake sites, as well as the pcapture on the observer(making sure it saves the file properly). Once that is all done we can polish and 'create' the fake files or bait, whichever direction we head in to ensure the bait is believable and keeps the attacker clicking. 
 
 ## How to run
+`Linux (ubuntu)`
+or 
 
-`Windows (recommended)`
+`Windows`
 
 ## Run the full demo
-`demo.bat`
+`demo.bat` for windows
 
 This will:
 - Start Docker containers
