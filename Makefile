@@ -1,3 +1,4 @@
+cat > Makefile <<'EOF'
 # CECS 478 Honeypot Project Makefile
 
 .PHONY: up demo down clean logs
@@ -10,12 +11,15 @@ up:
 
 demo:
 	@echo "Running demo..."
+	sleep 5
 	curl http://localhost:8080 || true
+	curl http://localhost:8080/admin || true
+	curl http://localhost:8080/test || true
 	sleep 2
 	@echo "---- Logs ----"
-	cat logs/access.log
+	cat logs/access.log || true
 	@echo "--------------"
-	python src/generate_metrics.py
+	python3 src/generate_metrics.py || python src/generate_metrics.py
 	@echo "Demo complete."
 
 logs:
@@ -28,3 +32,4 @@ clean:
 	docker compose down
 	rm -rf logs artifacts
 	@echo "Cleaned."
+EOF
