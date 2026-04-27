@@ -1,4 +1,3 @@
-cat > Makefile <<'EOF'
 # CECS 478 Honeypot Project Makefile
 
 .PHONY: up demo down clean logs
@@ -32,4 +31,3 @@ clean:
 	docker compose down
 	rm -rf logs artifacts
 	@echo "Cleaned."
-EOF
