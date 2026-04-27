@@ -14,16 +14,36 @@ Setup Overview: We must setup this github repo, docker instances of the decoy an
 
 ## How to run
 
-clone the repository and start the system
+### clone the repository and start the system
 
 - bash 
 git clone https://github.com/notbenjiie/478-Project.git
 cd 478-Project
+
+2. Star the system 
 make up
-make demo
+
+on windows run
+demo.bat
 
 note: on windows you run (demo.bat)
 
+3. simulate traffic
+- curl http://localhost:8080 (normal)
+- curl http://localhost:8080/admin (suspicious)
+- curl http://localhost:8080/test (normal)
+
+4. View logs
+type logs\access.log
+- log records all incoming requests and classifications
+  
+5. Generate metrics
+python src\generate_metrics.py
+
+6. View results
+type artifacts\release\metrics.json
+- this file contains a summary of total requests, normal traffic, and suspicious activity
+- 
 demo description
 the demo performs a complete end to end execution of the system:
 1. starts the honeypot service inside docker
