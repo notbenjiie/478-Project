@@ -14,7 +14,7 @@ Setup Overview: We must setup this github repo, docker instances of the decoy an
 
 ## How to run
 
-## requirements
+requirements
 - docker
 - docker compose
 - Make
@@ -40,6 +40,9 @@ Example output:
 Logs:
 - NORMAL GET /
 - SUSPICIOUS GET /admin
+
+## Note
+`We provide a Makefile for the required Linux workflow and a demo.bat script for Windows users who don’t have make installed`
 
 ## Windows Support (Optional)
 - for windows users, run:
