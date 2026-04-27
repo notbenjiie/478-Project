@@ -41,49 +41,7 @@ Logs:
 - NORMAL GET /
 - SUSPICIOUS GET /admin
 
-## Note
-`We provide a Makefile for the required Linux workflow and a demo.bat script for Windows users who don’t have make installed`
-
-## Windows Support (Optional)
-- for windows users, run:
-
-`bat
-demo.bat`
-
-This performs the same steps as the Makefile:
-- Starts the system
-- Sends test requests
-- Displays logs
-- Generates metrics
-  
-## Windows run (optional)
-start the system:
-
-`docker-compose up -d --build`
-
-3. simulate traffic
-- `curl http://localhost:8080 (normal)`
-- `curl http://localhost:8080/admin (suspicious)`
-- `curl http://localhost:8080/test (normal)`
-
-4. View logs
-   
-`type logs\access.log`
-
-- log records all incoming requests and classifications
-  
-5. Generate metrics
-   
-`python src\generate_metrics.py`
-
-7. View results
-   
-`type artifacts\release\metrics.json`
-- this file contains a summary of total requests, normal traffic, and suspicious activity
-
 ## Demo Video Linux
-
-## Demo Video Windows
 [watch Demo](DOCS/demo.mp4)
 
 ## Security Invariants
