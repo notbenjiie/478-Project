@@ -66,13 +66,13 @@ request
 
 classification
 
-- Normal
-- Suspicious
-- normal
+- NORMAL
+- SUSPICIOUS
+- NORMAL
 
 Example log entries
-- Normal GET /
-- suspicious GET /admin
+- NORMAL GET /
+- SUSPICIOUS GET /admin
 
 ## Artifacts
 - all generated evidence is stored in:
