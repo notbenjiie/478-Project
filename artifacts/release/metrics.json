@@ -4,13 +4,13 @@
         "component": "Harbor-Portal-Honeypot"
     },
     "traffic_summary": {
-        "total_request_count": 10,
+        "total_request_count": 62,
         "unique_attacker_count": 0,
         "flagged_ips": []
     },
     "threat_intelligence": {
         "primary_source_ip": "None",
         "incident_count": 0,
-        "risk_level": "Low"
+        "risk_level": "High"
     }
 }
