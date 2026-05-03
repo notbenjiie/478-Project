@@ -4,7 +4,7 @@
         "component": "Harbor-Portal-Honeypot"
     },
     "traffic_summary": {
-        "total_request_count": 62,
+        "total_request_count": 3,
         "unique_attacker_count": 0,
         "flagged_ips": []
     },
