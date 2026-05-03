@@ -1,23 +1,24 @@
 # Contribution Log
 
 ## Team Members
-- Annie Green
-- notbenjiie
+- Stephanie Figueroa as (Annie Green)
+- Benjamin Diaz as (notbenjiie)
 
 ## Contributions
 
-### Annie Green
+### Stephanie Figueroa as Annie Green
 - Implemented honeypot request handling
 - Built classification logic (NORMAL / SUSPICIOUS)
 - Developed logging system
 - Created Makefile and reproducibility pipeline
 - Integrated metrics generation
 
-### notbenjiie
+### Benjamin Diaz as notbenjiie
 - Designed Docker environment and services
 - Implemented packet capture (pcap)
 - Assisted with system integration
 - Contributed to testing and debugging
+- Designed metric generation code
 
 ---
 
@@ -26,8 +27,8 @@
 | Component | Owner |
 |----------|------|
 | src/ (core logic) | Annie |
-| docker-compose.yml | notbenjiie |
+| docker-compose.yml | Annie|
 | Makefile | Annie |
 | artifacts/ | notbenjiie |
-| metrics generation | Annie |
+| metrics generation | notbenjiie|
 | packet capture | notbenjiie |
