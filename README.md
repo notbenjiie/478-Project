@@ -46,6 +46,9 @@ Logs:
 ## FINAL DEMO VIDEO LINK
 [View Slides](https://docs.google.com/presentation/d/10t-NMCDJtPISPto_gt5wPFp6Cvo3L-zI0VWYqFeTZIw)
 
+## FINAL PROJECT REPORT PDF
+[CECS 478 Final Report.pdf](https://github.com/user-attachments/files/27327317/CECS.478.Final.Report.pdf)
+
 ## Security Invariants
 1. **Zero Trust Logging:** The system assumes all traffic to the decoy is malicious.
 2. **Data Isolation:** Captured credentials are never stored in the production DB; they remain in isolated forensic logs.
