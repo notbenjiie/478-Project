@@ -88,7 +88,7 @@ the system successfully:
 - Logs all activity
 - Generates structured metrics for analysis
 
-  ## Reproducibility
+ ## Reproducibility
 
 Run the following command on a fresh clone:
 
