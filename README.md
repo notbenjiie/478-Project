@@ -88,6 +88,12 @@ the system successfully:
 - Logs all activity
 - Generates structured metrics for analysis
 
+  ## Reproducibility
+
+Run the following command on a fresh clone:
+
+`make clean && make up && make demo`
+
 example classification:
 - NORMAL → `/`
 - SUSPICIOUS → `/admin`
