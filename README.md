@@ -40,8 +40,11 @@ Logs:
 - NORMAL GET /
 - SUSPICIOUS GET /admin
 
-## Demo Video
+## Demo Video #1
 [watch Demo](DOCS/demo.mp4)
+
+## FINAL DEMO VIDEO LINK
+(https://docs.google.com/presentation/d/10t-NMCDJtPISPto_gt5wPFp6Cvo3L-zI0VWYqFeTZIw/edit?usp=sharing)
 
 ## Security Invariants
 1. **Zero Trust Logging:** The system assumes all traffic to the decoy is malicious.
