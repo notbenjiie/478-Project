@@ -44,7 +44,7 @@ Logs:
 [watch Demo](DOCS/demo.mp4)
 
 ## FINAL DEMO VIDEO LINK
-(https://docs.google.com/presentation/d/10t-NMCDJtPISPto_gt5wPFp6Cvo3L-zI0VWYqFeTZIw/edit?slide=id.g3e7887216aa_0_2388#slide=id.g3e7887216aa_0_2388)
+[View Slides](https://docs.google.com/presentation/d/10t-NMCDJtPISPto_gt5wPFp6Cvo3L-zI0VWYqFeTZIw)
 
 ## Security Invariants
 1. **Zero Trust Logging:** The system assumes all traffic to the decoy is malicious.
