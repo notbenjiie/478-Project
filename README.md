@@ -131,9 +131,9 @@ New improvements include:
 
 ### Example Detection Output
 
-```text
+`
 SUSPICIOUS GET /phpmyadmin from 172.18.0.1 score=4 reasons=sensitive_endpoint,repeated_requests,off_hours_access
-```
+`
 
 These updates improve realism, reduce false positives, and provide stronger behavioral evidence for security analysis.
 
