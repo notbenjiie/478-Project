@@ -1,40 +1,64 @@
-from http.server import BaseHTTPRequestHandler, HTTPServer
-import logging
-import os
+from flask import Flask, request
+from datetime import datetime
 
-LOG_DIR = os.environ.get("HONEYPOT_LOG_DIR", "logs")
-os.makedirs(LOG_DIR, exist_ok=True)
+app = Flask(__name__)
 
-logging.basicConfig(
-    filename=os.path.join(LOG_DIR, "access.log"),
-    level=logging.INFO,
-    format="%(asctime)s %(message)s"
-)
+SENSITIVE_PATHS = {
+    "/admin",
+    "/login",
+    "/wp-admin",
+    "/phpmyadmin",
+    "/ssh",
+}
 
-def classify_path(path):
-    """
-    Classify incoming request paths.
-    Any path containing 'admin' is considered suspicious.
-    """
-    if "admin" in path.lower():
-        return "SUSPICIOUS"
-    return "NORMAL"
+request_counts = {}
 
-class Handler(BaseHTTPRequestHandler):
-    def do_GET(self):
-        ip = self.client_address[0]
 
-        label = classify_path(self.path)
+def classify_request(path, source_ip):
+    score = 0
+    reasons = []
 
-        log_entry = f"{label} GET {self.path} from {ip}"
-        logging.info(log_entry)
+    path = path.lower()
+    current_hour = datetime.now().hour
 
-        self.send_response(200)
-        self.send_header("Content-Type", "text/plain")
-        self.end_headers()
-        self.wfile.write(f"{label}: Hello from honeypot\n".encode())
+    if path in SENSITIVE_PATHS:
+        score += 2
+        reasons.append("sensitive_endpoint")
+
+    request_counts[source_ip] = request_counts.get(source_ip, 0) + 1
+
+    if request_counts[source_ip] >= 5:
+        score += 1
+        reasons.append("repeated_requests")
+
+    if current_hour < 6 or current_hour > 22:
+        score += 1
+        reasons.append("off_hours_access")
+
+    if score >= 2:
+        return "SUSPICIOUS", score, reasons
+
+    return "NORMAL", score, reasons
+
+
+@app.route("/", defaults={"path": ""})
+@app.route("/<path:path>")
+def honeypot(path):
+    full_path = "/" + path
+    source_ip = request.remote_addr
+
+    classification, score, reasons = classify_request(full_path, source_ip)
+
+    log_line = (
+        f"{datetime.now()} {classification} GET {full_path} "
+        f"from {source_ip} score={score} reasons={','.join(reasons) or 'none'}\n"
+    )
+
+    with open("/var/log/app/access.log", "a") as log_file:
+        log_file.write(log_line)
+
+    return f"{classification}: Hello from honeypot\n"
+
 
 if __name__ == "__main__":
-    server = HTTPServer(("0.0.0.0", 8080), Handler)
-    print("Honeypot running on port 8080...")
-    server.serve_forever()
+    app.run(host="0.0.0.0", port=8080)
