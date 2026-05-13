@@ -103,3 +103,37 @@ example classification:
 metrics are exported to:
 
 `artifacts/release/metrics.json`
+
+## Recent Updates
+
+### Behavioral Analysis Upgrade
+
+The honeypot system was upgraded from a simple endpoint-based detector into a lightweight honeynet-style monitoring system
+
+New improvements include:
+
+- Multiple decoy endpoints:
+  - `/admin`
+  - `/login`
+  - `/wp-admin`
+  - `/phpmyadmin`
+
+- Behavioral scoring analysis using:
+  - source IP tracking
+  - repeated request detection
+  - off hours access monitoring
+  - endpoint sensitivity scoring
+
+- Enhanced forensic logging with:
+  - suspicion scores
+  - behavioral reasoning
+  - structured security metrics
+
+### Example Detection Output
+
+```text
+SUSPICIOUS GET /phpmyadmin from 172.18.0.1 score=4 reasons=sensitive_endpoint,repeated_requests,off_hours_access
+```
+
+These updates improve realism, reduce false positives, and provide stronger behavioral evidence for security analysis.
+
