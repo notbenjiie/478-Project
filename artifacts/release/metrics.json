@@ -11,6 +11,6 @@
     "threat_intelligence": {
         "primary_source_ip": "None",
         "incident_count": 0,
-        "risk_level": "High"
+        "risk_level": "Low"
     }
 }
