@@ -104,30 +104,36 @@ metrics are exported to:
 
 `artifacts/release/metrics.json`
 
-## Recent Updates
+## Recent Security Improvements
 
-### Behavioral Analysis Upgrade
+Based on instructor feedback, the honeypot system was enhanced to support more advanced behavioral analysis and lightweight honeynet style monitoring
 
-The honeypot system was upgraded from a simple endpoint-based detector into a lightweight honeynet-style monitoring system
+### Improvements Added
 
-New improvements include:
+#### Multiple Decoy Endpoints
+The system now monitors several commonly targeted administrative and authentication endpoints:
 
-- Multiple decoy endpoints:
-  - `/admin`
-  - `/login`
-  - `/wp-admin`
-  - `/phpmyadmin`
+- `/admin`
+- `/login`
+- `/wp-admin`
+- `/phpmyadmin`
 
-- Behavioral scoring analysis using:
-  - source IP tracking
-  - repeated request detection
-  - off hours access monitoring
-  - endpoint sensitivity scoring
+These endpoints simulate realistic attacker reconnaissance behavior commonly observed in web attacks
 
-- Enhanced forensic logging with:
-  - suspicion scores
-  - behavioral reasoning
-  - structured security metrics
+#### Behavioral Scoring
+Instead of relying solely on a single `/admin` trigger, the system now calculates a suspicion score using multiple indicators:
+
+- Sensitive endpoint access
+- Repeated requests from the same source IP
+- Off hours access behavior
+- Request frequency patterns
+
+#### Enhanced Logging
+Logs now include:
+
+- Suspicion scores
+- Behavioral reasoning
+- Source IP activity
 
 ### Example Detection Output
 
@@ -135,5 +141,4 @@ New improvements include:
 SUSPICIOUS GET /phpmyadmin from 172.18.0.1 score=4 reasons=sensitive_endpoint,repeated_requests,off_hours_access
 `
 
-These updates improve realism, reduce false positives, and provide stronger behavioral evidence for security analysis.
-
+These enhancements improve realism, reduce false positives, and provide stronger forensic evidence for analysis.
