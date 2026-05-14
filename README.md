@@ -142,3 +142,10 @@ SUSPICIOUS GET /phpmyadmin from 172.18.0.1 score=4 reasons=sensitive_endpoint,re
 `
 
 These enhancements improve realism, reduce false positives, and provide stronger forensic evidence for analysis.
+
+## Reproducibility
+
+The complete system can be reproduced using:
+
+`
+make clean && make up && make demo`
