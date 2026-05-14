@@ -118,7 +118,7 @@ The system now monitors several commonly targeted administrative and authenticat
 - `/wp-admin`
 - `/phpmyadmin`
 
-These endpoints simulate realistic attacker reconnaissance behavior commonly observed in web attacks
+These endpoints simulate realistic attacker acknowledgement behavior commonly observed in web attacks
 
 #### Behavioral Scoring
 Instead of relying solely on a single `/admin` trigger, the system now calculates a suspicion score using multiple indicators:
